@@ -1,4 +1,4 @@
-# Offline-First AI Chatbot
+# Offline AI Chatbot: Local vs. Hosted LLM Switch
 
 A terminal chatbot that runs **fully offline** using a local model via Ollama, with an optional flag to switch to a **hosted API** (Groq) for higher-quality responses.
 
