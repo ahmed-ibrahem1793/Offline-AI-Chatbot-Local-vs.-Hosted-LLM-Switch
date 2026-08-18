@@ -1,6 +1,6 @@
 # Offline-First AI Chatbot
 
-A terminal chatbot that runs **fully offline** using a local model via Ollama, with an optional flag to switch to a **hosted API** (Groq) for higher-quality responses. Built for Week 4 — Local LLMs & Open-Source Tooling.
+A terminal chatbot that runs **fully offline** using a local model via Ollama, with an optional flag to switch to a **hosted API** (Groq) for higher-quality responses.
 
 Both modes use the same `OpenAI` client — switching between local and hosted only requires changing the `base_url` and model name, nothing else.
 

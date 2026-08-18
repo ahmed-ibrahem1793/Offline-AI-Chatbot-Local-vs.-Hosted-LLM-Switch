@@ -4,12 +4,12 @@ from openai import OpenAI
 parser = argparse.ArgumentParser()
 parser.add_argument("--hosted", action="store_true", help="Use Grok instead of local Ollama")
 args = parser.parse_args()
-grok_api_key=os.environ.get("GROQ_API_KEY")
+groq_api_key=os.environ.get("GROQ_API_KEY")
 
 if args.hosted:
     base_url="https://api.groq.com/openai/v1"
     model = "groq/compound"
-    api_key = grok_api_key
+    api_key = groq_api_key
     print(f"[Hosted mode | {model} | requires internet + API key | higher quality]")
 else:
     base_url="http://localhost:11434/v1"
