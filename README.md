@@ -68,12 +68,26 @@ Chosen for significantly higher response quality, using Groq's fast inference in
 
 Measured using the built-in `[Xs | Y tok/s]` output printed after every response (uses the API's `usage.completion_tokens` divided by wall-clock response time).
 
+Tested with 4 identical prompts in both modes: `hello`, `what is the Capital of France?`, `what is an LLM`, `how can I use it`.
+
 | Mode | Model | Speed (tok/s) | Quality notes |
 |---|---|---|---|
-| Local | qwen2.5:0.5b | _fill in after testing on your machine_ | Fast, but shorter/simpler answers; occasional factual slips on niche questions |
-| Hosted | groq/compound | _fill in after testing_ | Noticeably more detailed and accurate; consistent across follow-ups |
+| Local | qwen2.5:0.5b | ~26.5 tok/s avg (range: 3.2–75.0) | Fast, but shorter/simpler answers; occasional factual slips on niche questions |
+| Hosted | groq/compound | ~139.3 tok/s avg (range: 26.4–256.0) | Noticeably more detailed and accurate; consistent across follow-ups |
 
-*(Run a few identical prompts in both modes and drop your actual numbers in here before submitting — the app prints them for you after every reply.)*
+<details>
+<summary>Raw per-prompt results</summary>
+
+| Prompt | Local (time \| tok/s) | Hosted (time \| tok/s) |
+|---|---|---|
+| `hello` | 3.13s \| 3.2 tok/s | 1.91s \| 29.9 tok/s |
+| `what is the Capital of France?` | 2.74s \| 7.3 tok/s | 17.22s \| 26.4 tok/s |
+| `what is an LLM` | 3.03s \| 20.4 tok/s | 4.94s \| 244.7 tok/s |
+| `how can I use it` | 5.00s \| 75.0 tok/s | 14.08s \| 256.0 tok/s |
+
+</details>
+
+**Observation:** tok/s is noisy on short replies (e.g. `hello`) since fixed overhead (network latency for hosted, model warm-up for local) dominates when few tokens are generated. The throughput gap between modes widens on longer, more substantive answers.
 
 ## Offline Proof
 
